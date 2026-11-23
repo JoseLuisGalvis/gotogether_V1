@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoTogether | Confirmación y Disponibilidad (S09-C) - TP Front End</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- Header Sticky con navegación por anclas, selector Dark Mode y Menú Hamburguesa -->
+  <header class="site-header" id="top-header">
+    <div class="header-container">
+      <div class="header-brand">
+        <span class="brand-name">GoTogether</span>
+        <span class="brand-code">S09-C</span>
+      </div>
+
+      <div class="header-right">
+        <!-- Navegación -->
+        <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
+          <ul id="nav-list">
+            <li><a href="#presentacion" class="nav-link">Presentación</a></li>
+            <li><a href="#propuestas" class="nav-link">Propuestas</a></li>
+            <li><a href="#diagramas" class="nav-link">Diagramas</a></li>
+            <li><a href="#detalles" class="nav-link">Detalles</a></li>
+          </ul>
+        </nav>
+
+        <!-- Controles: Botón Dark Mode con sombras blancas y Menú Hamburguesa -->
+        <div class="header-controls">
+          <button type="button" id="theme-toggle" class="btn-theme-toggle" aria-label="Alternar modo oscuro" title="Alternar entre modo claro y oscuro">
+            <span class="theme-icon" id="theme-icon" aria-hidden="true">🌙</span>
+            <span class="theme-text" id="theme-text">Modo Oscuro</span>
+          </button>
+
+          <button type="button" id="hamburger-btn" class="hamburger-btn" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="site-nav">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Sección Presentación -->
+    <section id="presentacion" class="section-presentacion">
+      <div class="presentacion-container">
+        <div class="logo-wrapper">
+          <img src="assets/logo-gotogether.png" alt="Logo de GoTogether" class="logo-img">
+        </div>
+        <div class="presentacion-info">
+          <div class="brand-pill">Movilidad y comunidades</div>
+          <h1>GoTogether</h1>
+          
+          <div class="problema-block">
+            <h3>Problema que abordamos</h3>
+            <p>
+              Coordinar grupos de viaje en transporte público entre fans del K-pop de forma segura, organizada y previsible para concurrir y regresar juntos de eventos, recitales y encuentros comunitarios.
+            </p>
+          </div>
+
+          <div class="creditos-contexto">
+            <div class="credito-item">
+              <span class="credito-label">Origen de la Startup:</span>
+              <p>Iniciativa concebida e impulsada originariamente por estudiantes del <strong>IFTS 16</strong>.</p>
+            </div>
+            <div class="credito-item">
+              <span class="credito-label">Propuestas y Soluciones Front End:</span>
+              <p>Diseñadas por el <strong>Grupo 35</strong> del <strong>IFTS 29</strong> para el bloque <strong>Confirmación y disponibilidad</strong> (Código de asignación: <strong>S09-C</strong>).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Propuestas -->
+    <section id="propuestas" class="section-propuestas">
+      <div class="section-title-wrap header-con-accion">
+        <div>
+          <h2>Propuestas de Automatización</h2>
+          <p class="section-intro">Flujos agénticos orientados a resolver con precisión la lógica operativa del bloque de confirmación y disponibilidad.</p>
+        </div>
+        <!-- Botón Abrir / Cerrar todos los desplegables -->
+        <div class="propuestas-toolbar">
+          <button type="button" id="btn-toggle-all-details" class="btn-toggle-all" aria-expanded="false">
+            <span class="btn-icon" aria-hidden="true">📂</span>
+            <span id="btn-toggle-text">Abrir todos los detalles</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="propuestas-grid">
+        <!-- Tarjeta Propuesta 1 (R5) -->
+        <article class="propuesta-card" id="propuesta-r5">
+          <header class="propuesta-header">
+            <span class="badge">Regla R5</span>
+            <h3>Confirmación segura de grupo</h3>
+          </header>
+
+          <div class="propuesta-body">
+            <div class="sentencia-block">
+              <span class="sentencia-label">Sentencia original:</span>
+              <blockquote class="sentencia-texto">
+                "Si el usuario confirma un grupo compatible, sus datos, identidad y edad están verificados, es mayor de edad o menor con autorización de su tutor y queda cupo al confirmar, el sistema reserva ese cupo y registra su incorporación. Todas las condiciones son necesarias para aplicar esta regla."
+              </blockquote>
+            </div>
+
+            <div class="campo-bloque">
+              <h4>Título de la solución</h4>
+              <p class="solucion-texto">Confirmación segura de grupo</p>
+            </div>
+
+            <div class="campo-bloque">
+              <h4>Beneficio</h4>
+              <p class="beneficio-texto">
+                Evita incorporaciones sin verificar o sin autorización del tutor legal, resguardando la seguridad integral de la comunidad en cada traslado. A la vez, previene cupos duplicados o inconsistencias de capacidad asegurando una reserva atómica y fehaciente en tiempo real.
+              </p>
+            </div>
+
+            <!-- Ancla y Desplegable R5 -->
+            <div id="detalles" class="detalles-anchor-point"></div>
+            <details class="propuesta-detalles" id="detalles-r5">
+              <summary tabindex="0">Desplegar análisis y especificación del flujo R5</summary>
+              <div class="detalles-contenido">
+                
+                <div class="detalle-seccion">
+                  <h5>1. Datos que entran</h5>
+                  <ul>
+                    <li>Grupo confirmado compatible (identificador y requerimientos del grupo).</li>
+                    <li>Estado de verificación de datos personales, identidad y edad del usuario.</li>
+                    <li>Edad cronológica declarada y constatada.</li>
+                    <li>Autorización formal del tutor legal (obligatoria en caso de ser menor de edad).</li>
+                    <li>Estado y disponibilidad de cupo en el grupo al momento exacto de confirmar.</li>
+                  </ul>
+                </div>
+
+                <div class="detalle-seccion">
+                  <h5>2. Qué se decide</h5>
+                  <p>
+                    El sistema evalúa de forma taxativa el cumplimiento conjunto de las reglas: <strong>TODAS las condiciones son necesarias</strong> para aplicar la incorporación. La condición disyuntiva <strong>"o" aplica únicamente a la edad</strong> (ser mayor de edad O ser menor con debida autorización de su tutor). Si falta cualquiera de las verificaciones o el cupo se encuentra agotado, la regla no se aplica.
+                  </p>
+                </div>
+
+                <div class="detalle-seccion">
+                  <h5>3. Qué haría el agente y qué herramienta consultaría</h5>
+                  <p>
+                    El agente de incorporación recibe la intención de confirmación y realiza las siguientes acciones coordinadas:
+                  </p>
+                  <ul>
+                    <li>Consulta el <em>Servicio de Verificación de Identidad</em> para validar que los datos, la documentación biométrica o legal y la edad estén 100% aprobados.</li>
+                    <li>Si el usuario es menor de edad, consulta la <em>Herramienta de Validación Tutelar</em> para comprobar que la autorización esté firmada, vigente y acreditada.</li>
+                    <li>Consulta en tiempo real el <em>Gestor Concurrente de Cupos</em> justo antes de consolidar el registro para verificar disponibilidad remanente.</li>
+                    <li>Ejecuta la transacción confirmatoria bloqueando el asiento de forma atómica.</li>
+                  </ul>
+                </div>
+
+                <div class="detalle-seccion">
+                  <h5>4. Resultado esperado</h5>
+                  <p>
+                    El sistema reserva de inmediato ese cupo y registra formalmente la incorporación del usuario al grupo de viaje, confirmándole los detalles del punto de encuentro y los integrantes confirmados.
+                  </p>
+                </div>
+
+                <div class="detalle-seccion">
+                  <h5>5. Excepciones e intervención humana</h5>
+                  <ul>
+                    <li>
+                      <strong>Caso límite R5:</strong> Si el cupo se agota justo al momento de confirmar, el sistema consulta el cupo de nuevo en ese instante preciso; al constatar que ya no quedan plazas libres, se detiene la reserva y el caso pasa inmediatamente al flujo de la <strong>Regla R6</strong>.
+                    </li>
+                    <li>
+                      Si la documentación tutelar presenta borrosidad, discordancias o expiración, se bloquea el proceso automático y se deriva el expediente a revisión humana por parte del equipo de soporte.
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="detalle-seccion supuesto-box">
+                  <h5>6. Supuestos del grupo</h5>
+                  <div class="tag-supuesto">[Decisión del grupo, no definida por la sentencia]</div>
+                  <p>
+                    En R5, si falta alguna verificación de datos o no se aportó la autorización tutelar requerida, no se reserva el cupo bajo ningún término; el sistema le solicita al usuario los requisitos faltantes mediante una notificación explicativa y, en caso de detectarse inconsistencias o anomalías de seguridad, el caso se deriva automáticamente a revisión humana.
+                  </p>
+                </div>
+
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <!-- Tarjeta Propuesta 2 (R6) -->
+        <article class="propuesta-card" id="propuesta-r6">
+          <header class="propuesta-header">
+            <span class="badge">Regla R6</span>
+            <h3>Aviso de cupo perdido: elegís vos</h3>
+          </header>
+
+          <div class="propuesta-body">
+            <div class="sentencia-block">
+              <span class="sentencia-label">Sentencia original:</span>
+              <blockquote class="sentencia-texto">
+                "Si el grupo elegido pierde su cupo antes de completar la incorporación, el sistema informa el cambio y solicita elegir otra opción, sin asignar un grupo diferente automáticamente."
+              </blockquote>
+            </div>
+
+            <div class="campo-bloque">
+              <h4>Título de la solución</h4>
+              <p class="solucion-texto">Aviso de cupo perdido: elegís vos</p>
+            </div>
+
+            <div class="campo-bloque">
+              <h4>Beneficio</h4>
+              <p class="beneficio-texto">
+                Brinda total transparencia y control al usuario, garantizando que nunca quede asignado en un grupo que no eligió. Esto cuida la comodidad, el confort y la afinidad de las personas al viajar, permitiéndoles decidir libremente su alternativa de viaje.
+              </p>
+            </div>
+
+            <!-- Desplegable R6 -->
+            <details class="propuesta-detalles" id="detalles-r6">
+              <summary tabindex="0">Desplegar análisis y especificación del flujo R6</summary>
+              <div class="detalles-contenido">
+                
+                <div class="detalle-seccion">
+                  <h5>1. Datos que entran</h5>
+                  <ul>
+                    <li>Grupo elegido por el usuario (identificador y recorrido pretendido).</li>
+                    <li>Estado de la incorporación en curso (intento de reserva pendiente).</li>
+                    <li>Estado del cupo (alerta de ocupación total o vacantes en 0).</li>
+                  </ul>
+                </div>
+
+                <div class="detalle-seccion">
+                  <h5>2. Qué se decide</h5>
+                  <p>
+                    El sistema detecta si el cupo fue tomado antes de concluir la operación. Al comprobar la falta de cupo, se decide interrumpir el alta en ese grupo específico, emitir un mensaje informativo claro y habilitar la instancia de reelección voluntaria, <strong>sin asignar un grupo diferente de forma automática</strong> bajo ninguna circunstancia.
+                  </p>
+                </div>
+
+                <div class="detalle-seccion">
+                  <h5>3. Qué haría el agente y qué herramienta consultaría</h5>
+                  <p>
+                    El agente de gestión de contingencias opera de la siguiente manera:
+                  </p>
+                  <ul>
+                    <li>Consulta el <em>Monitor de Disponibilidad de Plazas</em> para constatar la pérdida de vacante en el grupo seleccionado.</li>
+                    <li>Descarta cualquier intento de asignación arbitraria o forzosa.</li>
+                    <li>Consulta la <em>Herramienta de Coincidencias de Movilidad</em> para obtener un listado actualizado de grupos compatibles alternativos (mismo horario, paradas o fans afines).</li>
+                    <li>Presenta el mensaje de aviso y entrega la lista de opciones para que el usuario sea quien decida con quién viajar.</li>
+                  </ul>
+                </div>
+
+                <div class="detalle-seccion">
+                  <h5>4. Resultado esperado</h5>
+                  <p>
+                    El sistema informa oportunamente el cambio de estado (cupo ya no disponible), solicita al usuario elegir otra opción entre las alternativas y <strong>no asigna ningún grupo diferente automáticamente</strong>, resguardando la soberanía de la elección.
+                  </p>
+                </div>
+
+                <div class="detalle-seccion">
+                  <h5>5. Excepciones e intervención humana</h5>
+                  <ul>
+                    <li>
+                      <strong>Caso límite R6:</strong> Si no hay grupos alternativos compatibles disponibles en ese momento, el sistema <strong>no asigna nada</strong>; comunica la situación con claridad y propone reformular los criterios de viaje o crear un grupo propio.
+                    </li>
+                    <li>
+                      Si el usuario manifiesta dificultades reiteradas para encontrar grupos o precisa asistencia para articular recorridos, se ofrece la derivación a soporte asistido por un operador humano.
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="detalle-seccion supuesto-box">
+                  <h5>6. Supuestos del grupo</h5>
+                  <div class="tag-supuesto">[Decisión del grupo, no definida por la sentencia]</div>
+                  <p>
+                    En R6, si no hay alternativas compatibles disponibles, el sistema informa la situación de manera explícita y le ofrece al usuario ajustar o flexibilizar los criterios de búsqueda (como puntos de encuentro aledaños o márgenes de horario), disponiendo además de la alternativa de requerir revisión y soporte humano opcional.
+                  </p>
+                </div>
+
+              </div>
+            </details>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Sección Diagramas -->
+    <section id="diagramas" class="section-diagramas">
+      <div class="section-title-wrap">
+        <h2>Diagramas de Flujo</h2>
+        <p class="section-intro">Modelado visual interactivo en SVG con trazabilidad de caminos, decisiones concurrentes y puntos de control.</p>
+      </div>
+
+      <!-- Leyenda Unificada de Diagramas -->
+      <div class="diagrama-leyenda">
+        <h4 class="leyenda-titulo">Leyenda de Notación y Convenciones</h4>
+        <div class="leyenda-grid">
+          <div class="leyenda-item">
+            <span class="leyenda-simbolo simbolo-ovalo"></span>
+            <span class="leyenda-texto"><strong>Óvalo:</strong> Inicio / Fin de flujo</span>
+          </div>
+          <div class="leyenda-item">
+            <span class="leyenda-simbolo simbolo-paralelogramo"></span>
+            <span class="leyenda-texto"><strong>Paralelogramo:</strong> Datos de entrada</span>
+          </div>
+          <div class="leyenda-item">
+            <span class="leyenda-simbolo simbolo-rectangulo"></span>
+            <span class="leyenda-texto"><strong>Rectángulo:</strong> Acción del sistema / agente</span>
+          </div>
+          <div class="leyenda-item">
+            <span class="leyenda-simbolo simbolo-rombo"></span>
+            <span class="leyenda-texto"><strong>Rombo:</strong> Decisión condicional (SÍ / NO)</span>
+          </div>
+          <div class="leyenda-item">
+            <span class="leyenda-simbolo simbolo-humana"></span>
+            <span class="leyenda-texto"><strong>Color distinto:</strong> Intervención humana / Soporte</span>
+          </div>
+          <div class="leyenda-item">
+            <span class="leyenda-simbolo simbolo-punteado"></span>
+            <span class="leyenda-texto"><strong>Borde punteado:</strong> Decisión del grupo</span>
+          </div>
+          <div class="leyenda-item">
+            <span class="leyenda-simbolo simbolo-rojo"></span>
+            <span class="leyenda-texto"><strong>Nodo rojo:</strong> Prohibición / Regla imperativa</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="diagramas-stack">
+        <!-- DIAGRAMA 1: Regla R5 -->
+        <div class="diagrama-container" id="diagrama-r5">
+          <div class="diagrama-header">
+            <span class="badge">Flujo R5</span>
+            <h3>Diagrama 1: Confirmación segura de grupo</h3>
+            <div class="sentencia-diagrama">
+              <strong>Sentencia de referencia:</strong>
+              <blockquote>
+                "Si el usuario confirma un grupo compatible, sus datos, identidad y edad están verificados, es mayor de edad o menor con autorización de su tutor y queda cupo al confirmar, el sistema reserva ese cupo y registra su incorporación. Todas las condiciones son necesarias para aplicar esta regla."
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Mini Simulador interactivo R5: Probar un caso -->
+          <div class="simulador-card" id="simulador-r5">
+            <div class="simulador-header">
+              <span class="simulador-tag">Simulador Visual</span>
+              <span class="simulador-titulo">Probar un caso de ejecución en el Diagrama 1:</span>
+            </div>
+            <div class="simulador-botones">
+              <button type="button" class="btn-caso" data-diagrama="r5" data-caso="r5-exito">
+                🟢 Caso 1: Incorporación exitosa (Mayor o menor con tutor)
+              </button>
+              <button type="button" class="btn-caso" data-diagrama="r5" data-caso="r5-incompleto">
+                🟣 Caso 2: Falta verificación o tutor (Revisión humana)
+              </button>
+              <button type="button" class="btn-caso" data-diagrama="r5" data-caso="r5-sin-cupo">
+                🔵 Caso 3: Cupo agotado al confirmar (Deriva a R6)
+              </button>
+              <button type="button" class="btn-caso btn-reset" data-diagrama="r5" data-caso="reset">
+                🔄 Restablecer
+              </button>
+            </div>
+            <div class="simulador-feedback" id="feedback-r5">
+              Hacé clic en cualquiera de los botones para resaltar visualmente el recorrido del camino correspondiente en el diagrama.
+            </div>
+          </div>
+
+          <!-- SVG Inline Diagrama 1 con capas identificadas para interacción -->
+          <div class="svg-viewport-wrapper">
+            <svg id="svg-r5" class="diagrama-svg" viewBox="0 0 820 860" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arrow-r5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#7c3aed" />
+                </marker>
+                <marker id="arrow-si-r5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a" />
+                </marker>
+                <marker id="arrow-no-r5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+                </marker>
+              </defs>
+
+              <!-- Conectores y caminos base -->
+              <g class="svg-edge" id="r5-edge-1">
+                <path d="M 350 62 L 350 95" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r5)"/>
+              </g>
+              <g class="svg-edge" id="r5-edge-2">
+                <path d="M 350 150 L 350 185" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r5)"/>
+              </g>
+              <g class="svg-edge" id="r5-edge-3">
+                <path d="M 350 231 L 350 265" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r5)"/>
+              </g>
+              <g class="svg-edge" id="r5-edge-deca-si">
+                <path d="M 350 355 L 350 400" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-si-r5)"/>
+                <rect x="358" y="366" width="28" height="18" rx="3" fill="#dcfce7" stroke="#86efac"/>
+                <text x="372" y="379" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#15803d" text-anchor="middle">SÍ</text>
+              </g>
+              <g class="svg-edge" id="r5-edge-deca-no">
+                <path d="M 480 310 L 650 310 L 650 345" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-no-r5)"/>
+                <rect x="520" y="296" width="30" height="18" rx="3" fill="#fee2e2" stroke="#fca5a5"/>
+                <text x="535" y="309" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#b91c1c" text-anchor="middle">NO</text>
+              </g>
+              <g class="svg-edge" id="r5-edge-decb-si">
+                <path d="M 350 490 L 350 535" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-si-r5)"/>
+                <rect x="358" y="501" width="28" height="18" rx="3" fill="#dcfce7" stroke="#86efac"/>
+                <text x="372" y="514" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#15803d" text-anchor="middle">SÍ</text>
+              </g>
+              <g class="svg-edge" id="r5-edge-decb-no">
+                <path d="M 495 445 L 610 445 L 610 365 L 650 365" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-no-r5)"/>
+                <rect x="525" y="432" width="30" height="18" rx="3" fill="#fee2e2" stroke="#fca5a5"/>
+                <text x="540" y="445" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#b91c1c" text-anchor="middle">NO</text>
+              </g>
+              <g class="svg-edge" id="r5-edge-rechazo-1">
+                <path d="M 650 381 L 650 415" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r5)"/>
+              </g>
+              <g class="svg-edge" id="r5-edge-rechazo-2">
+                <path d="M 650 500 L 650 535" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r5)"/>
+              </g>
+              <g class="svg-edge" id="r5-edge-decc-no">
+                <path d="M 220 580 L 110 580 L 110 615" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-no-r5)"/>
+                <rect x="145" y="567" width="30" height="18" rx="3" fill="#fee2e2" stroke="#fca5a5"/>
+                <text x="160" y="580" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#b91c1c" text-anchor="middle">NO</text>
+              </g>
+              <g class="svg-edge" id="r5-edge-decc-si">
+                <path d="M 350 625 L 350 660" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-si-r5)"/>
+                <rect x="358" y="633" width="28" height="18" rx="3" fill="#dcfce7" stroke="#86efac"/>
+                <text x="372" y="646" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#15803d" text-anchor="middle">SÍ</text>
+              </g>
+              <g class="svg-edge" id="r5-edge-deriva-r6">
+                <path d="M 110 651 L 110 685" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r5)"/>
+              </g>
+              <g class="svg-edge" id="r5-edge-exito-1">
+                <path d="M 350 700 L 350 730" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r5)"/>
+              </g>
+              <g class="svg-edge" id="r5-edge-exito-2">
+                <path d="M 350 770 L 350 800" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r5)"/>
+              </g>
+
+              <!-- 1. Inicio -->
+              <g class="svg-step" id="r5-step-inicio">
+                <rect x="230" y="20" width="240" height="42" rx="21" ry="21" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+                <text x="350" y="46" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#4c1d95" text-anchor="middle">Inicio: El usuario confirma un grupo</text>
+              </g>
+
+              <!-- 2. Datos -->
+              <g class="svg-step" id="r5-step-datos">
+                <polygon points="170,95 560,95 530,150 140,150" fill="#fdf2f8" stroke="#ec4899" stroke-width="2"/>
+                <text x="350" y="118" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#9d174d" text-anchor="middle">Datos: grupo, datos, identidad, edad,</text>
+                <text x="350" y="136" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#9d174d" text-anchor="middle">autorización del tutor, cupo al confirmar</text>
+              </g>
+
+              <!-- 3. Acción Agente -->
+              <g class="svg-step" id="r5-step-agente">
+                <rect x="180" y="185" width="340" height="46" rx="6" ry="6" fill="#f8fafc" stroke="#6d28d9" stroke-width="2"/>
+                <text x="350" y="213" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#2e1065" text-anchor="middle">El agente consulta verificación, autorizaciones y cupos</text>
+              </g>
+
+              <!-- 4. Decisión A -->
+              <g class="svg-step" id="r5-step-deca">
+                <polygon points="350,265 480,310 350,355 220,310" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+                <text x="350" y="306" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#78350f" text-anchor="middle">¿Datos, identidad y edad</text>
+                <text x="350" y="322" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#78350f" text-anchor="middle">verificados?</text>
+              </g>
+
+              <!-- 5. Decisión B -->
+              <g class="svg-step" id="r5-step-decb">
+                <polygon points="350,400 495,445 350,490 205,445" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+                <text x="350" y="440" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#78350f" text-anchor="middle">¿Mayor de edad O menor con</text>
+                <text x="350" y="456" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#78350f" text-anchor="middle">autorización del tutor?</text>
+              </g>
+
+              <!-- Rechazo A/B: No reserva -->
+              <g class="svg-step" id="r5-step-rechazo-ab">
+                <rect x="550" y="345" width="200" height="36" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+                <text x="650" y="367" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#991b1b" text-anchor="middle">No reserva cupo</text>
+              </g>
+
+              <!-- Paso Punteado: Decisión del Grupo / Humana -->
+              <g class="svg-step" id="r5-step-humano">
+                <rect x="530" y="415" width="240" height="85" rx="8" fill="#fae8ff" stroke="#a21caf" stroke-width="2" stroke-dasharray="6,4"/>
+                <rect x="575" y="405" width="150" height="18" rx="4" fill="#a21caf"/>
+                <text x="650" y="418" font-family="system-ui, sans-serif" font-size="10" font-weight="800" fill="#ffffff" text-anchor="middle">Decisión del grupo</text>
+                <text x="650" y="442" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#701a75" text-anchor="middle">Solicitar requisitos faltantes</text>
+                <text x="650" y="460" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#701a75" text-anchor="middle">/ Derivar a revisión humana</text>
+                <text x="650" y="478" font-family="system-ui, sans-serif" font-size="10" font-style="italic" fill="#86198f" text-anchor="middle">(ante inconsistencias de identidad)</text>
+              </g>
+
+              <!-- Fin Rechazo A/B -->
+              <g class="svg-step" id="r5-step-fin-ab">
+                <rect x="560" y="535" width="180" height="38" rx="19" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+                <text x="650" y="559" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">Fin: En espera de datos</text>
+              </g>
+
+              <!-- 6. Decisión C -->
+              <g class="svg-step" id="r5-step-decc">
+                <polygon points="350,535 480,580 350,625 220,580" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+                <text x="350" y="575" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#78350f" text-anchor="middle">¿Queda cupo</text>
+                <text x="350" y="591" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#78350f" text-anchor="middle">al confirmar?</text>
+              </g>
+
+              <!-- Rechazo C: No reserva -->
+              <g class="svg-step" id="r5-step-rechazo-c">
+                <rect x="20" y="615" width="180" height="36" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+                <text x="110" y="637" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#991b1b" text-anchor="middle">No reserva cupo</text>
+              </g>
+
+              <!-- Pasa a R6 -->
+              <g class="svg-step" id="r5-step-deriva-r6">
+                <rect x="15" y="685" width="190" height="58" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+                <text x="110" y="709" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#5b21b6" text-anchor="middle">Pasa al Diagrama 2</text>
+                <text x="110" y="727" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#7c3aed" text-anchor="middle">(Flujo R6: Cupo agotado)</text>
+              </g>
+
+              <!-- Acción: Reservar cupo -->
+              <g class="svg-step" id="r5-step-reserva">
+                <rect x="250" y="660" width="200" height="40" rx="6" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+                <text x="350" y="685" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#065f46" text-anchor="middle">Reservar cupo</text>
+              </g>
+
+              <!-- Acción: Registrar incorporación -->
+              <g class="svg-step" id="r5-step-registro">
+                <rect x="240" y="730" width="220" height="40" rx="6" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+                <text x="350" y="755" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#065f46" text-anchor="middle">Registrar incorporación</text>
+              </g>
+
+              <!-- Fin Éxito -->
+              <g class="svg-step" id="r5-step-fin-ok">
+                <rect x="230" y="800" width="240" height="42" rx="21" ry="21" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+                <text x="350" y="826" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#14532d" text-anchor="middle">Fin: Incorporación exitosa</text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Descripción textual debajo del Diagrama 1 -->
+          <div class="diagrama-descripcion">
+            <h4>Descripción del flujo R5</h4>
+            <p>
+              El flujo se inicia cuando el usuario confirma su voluntad de sumarse a un grupo de viaje afín. El agente toma los datos integrales (identidad, edad, credenciales de tutoría y cupo remanente) y consulta concurrentemente los servicios correspondientes. 
+            </p>
+            <p>
+              Se ejecutan tres compuertas de decisión consecutivas e inexcusables: 
+              <strong>(A)</strong> la verificación positiva de identidad, datos y edad; 
+              <strong>(B)</strong> la condición de mayoría de edad o, en su defecto, minoría con debida autorización tutelar; y 
+              <strong>(C)</strong> la disponibilidad efectiva de cupo libre en ese mismo instante.
+            </p>
+            <p>
+              <strong>Caminos resultantes:</strong> Si las tres compuertas resultan afirmativas (SÍ), el sistema reserva el cupo de forma atómica, registra la incorporación y finaliza exitosamente. Si falla la validación A o B, no se efectúa la reserva, se activan los pasos definidos por el grupo (borde punteado: solicitud de requisitos faltantes con derivación a revisión humana ante anomalías) y concluye en espera. Si falla C por haberse agotado el cupo en el instante de confirmación, se cancela la reserva y la solicitud pasa automáticamente al <strong>Diagrama 2 (Flujo R6)</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- DIAGRAMA 2: Regla R6 -->
+        <div class="diagrama-container" id="diagrama-r6">
+          <div class="diagrama-header">
+            <span class="badge">Flujo R6</span>
+            <h3>Diagrama 2: Aviso de cupo perdido: elegís vos</h3>
+            <div class="sentencia-diagrama">
+              <strong>Sentencia de referencia:</strong>
+              <blockquote>
+                "Si el grupo elegido pierde su cupo antes de completar la incorporación, el sistema informa el cambio y solicita elegir otra opción, sin asignar un grupo diferente automáticamente."
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Mini Simulador interactivo R6: Probar un caso -->
+          <div class="simulador-card" id="simulador-r6">
+            <div class="simulador-header">
+              <span class="simulador-tag">Simulador Visual</span>
+              <span class="simulador-titulo">Probar un caso de ejecución en el Diagrama 2:</span>
+            </div>
+            <div class="simulador-botones">
+              <button type="button" class="btn-caso" data-diagrama="r6" data-caso="r6-alternativas">
+                🟠 Caso 1: Cupo perdido con opciones (Elegís vos)
+              </button>
+              <button type="button" class="btn-caso" data-diagrama="r6" data-caso="r6-sin-opciones">
+                🟣 Caso 2: Sin alternativas compatibles (Ajustar búsqueda)
+              </button>
+              <button type="button" class="btn-caso" data-diagrama="r6" data-caso="r6-normal">
+                🟢 Caso 3: Cupo mantenido (Continúa normalmente)
+              </button>
+              <button type="button" class="btn-caso btn-reset" data-diagrama="r6" data-caso="reset">
+                🔄 Restablecer
+              </button>
+            </div>
+            <div class="simulador-feedback" id="feedback-r6">
+              Hacé clic en cualquiera de los botones para resaltar visualmente el recorrido del camino correspondiente en el diagrama.
+            </div>
+          </div>
+
+          <!-- SVG Inline Diagrama 2 con capas identificadas para interacción -->
+          <div class="svg-viewport-wrapper">
+            <svg id="svg-r6" class="diagrama-svg" viewBox="0 0 820 860" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arrow-r6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#7c3aed" />
+                </marker>
+                <marker id="arrow-si-r6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+                </marker>
+                <marker id="arrow-no-r6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a" />
+                </marker>
+              </defs>
+
+              <!-- Conectores base -->
+              <g class="svg-edge" id="r6-edge-1">
+                <path d="M 410 62 L 410 95" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r6)"/>
+              </g>
+              <g class="svg-edge" id="r6-edge-2">
+                <path d="M 410 145 L 410 180" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r6)"/>
+              </g>
+              <g class="svg-edge" id="r6-edge-3">
+                <path d="M 410 224 L 410 260" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r6)"/>
+              </g>
+              <g class="svg-edge" id="r6-edge-no">
+                <path d="M 580 310 L 680 310 L 680 350" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-no-r6)"/>
+                <rect x="605" y="296" width="30" height="18" rx="3" fill="#dcfce7" stroke="#86efac"/>
+                <text x="620" y="309" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#15803d" text-anchor="middle">NO</text>
+              </g>
+              <g class="svg-edge" id="r6-edge-no-fin">
+                <path d="M 680 392 L 680 430" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r6)"/>
+              </g>
+              <g class="svg-edge" id="r6-edge-si">
+                <path d="M 410 360 L 410 400" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-si-r6)"/>
+                <rect x="418" y="368" width="28" height="18" rx="3" fill="#fee2e2" stroke="#fca5a5"/>
+                <text x="432" y="381" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#b91c1c" text-anchor="middle">SÍ</text>
+              </g>
+              <g class="svg-edge" id="r6-edge-si-opciones">
+                <path d="M 410 440 L 410 475" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r6)"/>
+              </g>
+              <g class="svg-edge" id="r6-edge-sin-alt">
+                <path d="M 250 495 L 120 495 L 120 535" stroke="#a21caf" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrow-r6)"/>
+                <rect x="135" y="482" width="95" height="18" rx="3" fill="#fae8ff" stroke="#d8b4fe"/>
+                <text x="182" y="495" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#701a75" text-anchor="middle">Sin alternativas</text>
+              </g>
+              <g class="svg-edge" id="r6-edge-sin-alt-fin">
+                <path d="M 120 620 L 120 655" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r6)"/>
+              </g>
+              <g class="svg-edge" id="r6-edge-con-alt">
+                <path d="M 410 515 L 410 550" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r6)"/>
+              </g>
+              <g class="svg-edge" id="r6-edge-a-rojo">
+                <path d="M 410 590 L 410 625" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-si-r6)"/>
+              </g>
+              <g class="svg-edge" id="r6-edge-espera">
+                <path d="M 410 677 L 410 710" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r6)"/>
+              </g>
+              <g class="svg-edge" id="r6-edge-fin">
+                <path d="M 410 750 L 410 785" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-r6)"/>
+              </g>
+
+              <!-- 1. Inicio -->
+              <g class="svg-step" id="r6-step-inicio">
+                <rect x="280" y="20" width="260" height="42" rx="21" ry="21" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+                <text x="410" y="46" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#4c1d95" text-anchor="middle">Inicio: Incorporación en curso</text>
+              </g>
+
+              <!-- 2. Datos -->
+              <g class="svg-step" id="r6-step-datos">
+                <polygon points="230,95 610,95 580,145 200,145" fill="#fdf2f8" stroke="#ec4899" stroke-width="2"/>
+                <text x="410" y="125" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#9d174d" text-anchor="middle">Datos: grupo elegido y estado del cupo</text>
+              </g>
+
+              <!-- 3. Acción Agente -->
+              <g class="svg-step" id="r6-step-agente">
+                <rect x="235" y="180" width="350" height="44" rx="6" ry="6" fill="#f8fafc" stroke="#6d28d9" stroke-width="2"/>
+                <text x="410" y="207" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#2e1065" text-anchor="middle">El agente consulta el cupo en tiempo real</text>
+              </g>
+
+              <!-- 4. Decisión -->
+              <g class="svg-step" id="r6-step-decision">
+                <polygon points="410,260 580,310 410,360 240,310" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+                <text x="410" y="304" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#78350f" text-anchor="middle">¿El grupo perdió su cupo</text>
+                <text x="410" y="322" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#78350f" text-anchor="middle">antes de completar?</text>
+              </g>
+
+              <!-- Rama NO: Continúa -->
+              <g class="svg-step" id="r6-step-continua">
+                <rect x="585" y="350" width="190" height="42" rx="6" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+                <text x="680" y="376" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#065f46" text-anchor="middle">Continúa la incorporación</text>
+              </g>
+
+              <!-- Fin NO -->
+              <g class="svg-step" id="r6-step-fin-normal">
+                <rect x="590" y="430" width="180" height="40" rx="20" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+                <text x="680" y="455" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#14532d" text-anchor="middle">Fin: Cupo asegurado</text>
+              </g>
+
+              <!-- 5. Acción: Informar el cambio -->
+              <g class="svg-step" id="r6-step-informa">
+                <rect x="270" y="400" width="280" height="40" rx="6" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+                <text x="410" y="425" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#9a3412" text-anchor="middle">Informar el cambio (cupo agotado)</text>
+              </g>
+
+              <!-- 6. Acción: Mostrar opciones -->
+              <g class="svg-step" id="r6-step-opciones">
+                <rect x="250" y="475" width="320" height="40" rx="6" fill="#f8fafc" stroke="#6d28d9" stroke-width="2"/>
+                <text x="410" y="500" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#2e1065" text-anchor="middle">Mostrar opciones de grupos compatibles</text>
+              </g>
+
+              <!-- Rama Punteada: Sin alternativas -->
+              <g class="svg-step" id="r6-step-sin-alt">
+                <rect x="15" y="535" width="210" height="85" rx="8" fill="#fae8ff" stroke="#a21caf" stroke-width="2" stroke-dasharray="6,4"/>
+                <rect x="45" y="525" width="150" height="18" rx="4" fill="#a21caf"/>
+                <text x="120" y="538" font-family="system-ui, sans-serif" font-size="10" font-weight="800" fill="#ffffff" text-anchor="middle">Decisión del grupo</text>
+                <text x="120" y="562" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#701a75" text-anchor="middle">Informar y ofrecer ajustar</text>
+                <text x="120" y="580" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#701a75" text-anchor="middle">la búsqueda de viaje</text>
+                <text x="120" y="600" font-family="system-ui, sans-serif" font-size="10" font-style="italic" fill="#86198f" text-anchor="middle">(revisión humana opcional)</text>
+              </g>
+
+              <!-- Fin Sin alternativas -->
+              <g class="svg-step" id="r6-step-fin-sin-alt">
+                <rect x="25" y="655" width="190" height="38" rx="19" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+                <text x="120" y="679" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">Fin: No se asigna nada</text>
+              </g>
+
+              <!-- 7. Acción: Solicitar elegir otra -->
+              <g class="svg-step" id="r6-step-solicita">
+                <rect x="270" y="550" width="280" height="40" rx="6" fill="#f8fafc" stroke="#6d28d9" stroke-width="2"/>
+                <text x="410" y="575" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#2e1065" text-anchor="middle">Solicitar elegir otra opción</text>
+              </g>
+
+              <!-- 8. NODO ROJO: RESTRICCIÓN TAXATIVA -->
+              <g class="svg-step" id="r6-step-rojo">
+                <rect x="215" y="625" width="390" height="52" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="2.5"/>
+                <text x="410" y="648" font-family="system-ui, sans-serif" font-size="13" font-weight="900" fill="#991b1b" text-anchor="middle">⛔ REGLA ESTRICTA DE NEGOCIO</text>
+                <text x="410" y="666" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#b91c1c" text-anchor="middle">NO se asigna otro grupo automáticamente</text>
+              </g>
+
+              <!-- 9. Acción: Esperar la elección -->
+              <g class="svg-step" id="r6-step-espera">
+                <rect x="260" y="710" width="300" height="40" rx="6" fill="#f8fafc" stroke="#6d28d9" stroke-width="2"/>
+                <text x="410" y="735" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#2e1065" text-anchor="middle">Esperar la elección del usuario</text>
+              </g>
+
+              <!-- 10. Fin -->
+              <g class="svg-step" id="r6-step-fin-ok">
+                <rect x="270" y="785" width="280" height="42" rx="21" ry="21" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+                <text x="410" y="811" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#4c1d95" text-anchor="middle">Fin: Decisión soberana del usuario</text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Descripción textual debajo del Diagrama 2 -->
+          <div class="diagrama-descripcion">
+            <h4>Descripción del flujo R6</h4>
+            <p>
+              Este flujo modela el comportamiento del sistema cuando una incorporación en trámite se ve interrumpida por cambios en la disponibilidad concurrente del grupo de viaje seleccionado.
+            </p>
+            <p>
+              El agente consulta el estado del cupo en tiempo real. Si el grupo aún cuenta con vacante disponible (NO perdió cupo), la incorporación continúa su ciclo ordinario sin inconvenientes. 
+            </p>
+            <p>
+              <strong>Caminos resultantes:</strong> Si el grupo perdió su cupo antes de completar la incorporación (SÍ), el sistema ejecuta inmediatamente la secuencia protectora: informa el cambio al usuario mediante una advertencia clara, consulta y presenta grupos alternativos compatibles y solicita que elija una nueva opción.
+            </p>
+            <p>
+              Se destaca con un <strong>nodo rojo de restricción imperativa</strong> la prohibición expresa de realizar asignaciones automáticas de reemplazo: la plataforma nunca impone un grupo no elegido. El sistema queda a la espera de la decisión del usuario. En caso de que no existan alternativas en ese trayecto, la rama punteada (decisión del grupo) notifica la falta de opciones y ofrece reformular parámetros o solicitar asistencia humana.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer con créditos -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <p class="footer-title"><strong>GoTogether</strong> · Movilidad y comunidades</p>
+        <p>Propuesta para coordinar grupos de viaje en transporte público entre fans del K-pop.</p>
+        <p class="footer-subtext">Startup y proyecto originado por estudiantes del <strong>IFTS 16</strong>.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-title">TP Front End · <strong>Grupo 35</strong></p>
+        <p>Institución académica: <strong>IFTS 29</strong></p>
+        <p class="footer-subtext">Bloque: Confirmación y disponibilidad · Código: <strong>S09-C</strong></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
