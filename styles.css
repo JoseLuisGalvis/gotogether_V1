@@ -640,6 +640,84 @@ main {
   color: var(--text-muted);
 }
 
+.propuesta-action-footer {
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.btn-ver-detalle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.btn-ver-detalle:hover {
+  color: var(--primary-dark);
+  transform: translateX(4px);
+}
+
+.btn-ver-detalle:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Sección 4: Detalles Técnicos y Fichas de Flujo (Sección Visible)
+   ========================================================================== */
+.section-detalles {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-smooth);
+}
+
+.section-detalles:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.detalles-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.detalle-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.75rem;
+  transition: var(--transition-smooth);
+}
+
+.detalle-card-header {
+  margin-bottom: 1rem;
+}
+
+.detalle-card-header h3 {
+  font-size: 1.35rem;
+  color: var(--text-main);
+  margin-top: 0.25rem;
+}
+
+.lista-condiciones {
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: var(--text-muted);
+}
+
 /* Desplegables nativos details / summary */
 .propuesta-detalles {
   margin-top: 0.65rem;

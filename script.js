@@ -1,7 +1,7 @@
 /**
  * GoTogether - TP Front End (Grupo 35 - IFTS 29)
- * Etapa 5: Interacciones completas, Modo Oscuro con persistencia,
- *          Menú Hamburguesa accesible, animaciones y simulador interactivo.
+ * Etapa 7: Interacciones completas, navegación con sección visible "Detalles",
+ *          Modo Oscuro con persistencia, menú hamburguesa accesible y simulador interactivo.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeText = document.getElementById('theme-text');
   const htmlRoot = document.documentElement;
 
-  // Recupera la preferencia guardada o el esquema del sistema
   const savedTheme = localStorage.getItem('gotogether-theme');
   const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
@@ -60,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleMenu(!isOpen);
     });
 
-    // Cerrar al presionar la tecla Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && siteNav.classList.contains('is-open')) {
         toggleMenu(false);
@@ -68,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Cerrar al hacer clic fuera del menú en pantallas móviles
     document.addEventListener('click', (e) => {
       if (siteNav.classList.contains('is-open')) {
         if (!siteNav.contains(e.target) && !hamburgerBtn.contains(e.target)) {
@@ -101,14 +98,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnToggleAll = document.getElementById('btn-toggle-all-details');
   const btnToggleText = document.getElementById('btn-toggle-text');
 
-  // Soporte accesible por teclado (Enter y Espacio) en summary
   detailsElements.forEach((details) => {
     const summary = details.querySelector('summary');
     if (!summary) return;
 
     summary.addEventListener('keydown', (e) => {
       if (e.key === ' ' || e.key === 'Spacebar') {
-        e.preventDefault(); // Evita scroll indeseado al presionar Espacio
+        e.preventDefault();
         details.open = !details.open;
         actualizarEstadoBotonToggle();
       } else if (e.key === 'Enter') {
@@ -149,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ==========================================================================
-     4. Navegación Sticky con Scroll Suave y Resaltado Activo
+     4. Navegación Sticky con Scroll Suave y Resaltado de Sección Activa
      ========================================================================== */
   const navLinks = document.querySelectorAll('.site-nav .nav-link');
   const secciones = [
@@ -167,14 +163,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetElement) {
           e.preventDefault();
 
-          // Si el ancla es #detalles, desplegar ambos details y apuntar al inicio del bloque
+          // Si el ancla es #detalles, desplegar ambos details y apuntar a la sección visible
           if (targetId === '#detalles') {
             detailsElements.forEach((d) => (d.open = true));
             actualizarEstadoBotonToggle();
 
-            const targetDetail = document.getElementById('detalles-r5') || targetElement;
-            const headerOffset = 100;
-            const elementPosition = targetDetail.getBoundingClientRect().top;
+            const headerOffset = 90;
+            const elementPosition = targetElement.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
             window.scrollTo({
@@ -182,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
               behavior: 'smooth'
             });
 
-            const summaryEl = targetDetail.querySelector('summary');
+            const summaryEl = document.querySelector('#detalles-r5 summary');
             if (summaryEl) summaryEl.focus();
 
             toggleMenu(false);
@@ -200,9 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: 'smooth'
           });
 
-          // Cierra menú móvil al hacer clic
           toggleMenu(false);
-
           history.pushState(null, null, targetId);
           actualizarLinkActivo(targetId.substring(1));
         }
@@ -223,7 +216,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Detección automática de sección visible
   if ('IntersectionObserver' in window) {
     const observerOptions = {
       root: null,
@@ -262,13 +254,14 @@ document.addEventListener('DOMContentLoaded', () => {
      5. Mini Simulador Visual "Probar un caso" (Resaltado en SVG)
      ========================================================================== */
 
-  // Mapeo de casos para el Diagrama 1 (R5)
+  // Mapeo exhaustivo de los 4 casos para el Diagrama 1 (R5)
   const casosR5 = {
     'r5-exito': {
       nodes: [
         'r5-step-inicio',
         'r5-step-datos',
         'r5-step-agente',
+        'r5-step-compat',
         'r5-step-deca',
         'r5-step-decb',
         'r5-step-decc',
@@ -280,6 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'r5-edge-1',
         'r5-edge-2',
         'r5-edge-3',
+        'r5-edge-compat-si',
         'r5-edge-deca-si',
         'r5-edge-decb-si',
         'r5-edge-decc-si',
@@ -287,13 +281,33 @@ document.addEventListener('DOMContentLoaded', () => {
         'r5-edge-exito-2'
       ],
       tipo: 'success',
-      mensaje: '🟢 <strong>Caso 1: Cumplimiento total.</strong> Se validaron datos, condición de edad (mayor de edad o menor con autorización) y cupo libre en tiempo real. Se reserva el asiento y se registra la incorporación exitosa.'
+      mensaje: '🟢 <strong>Caso 1: Cumplimiento total.</strong> Grupo compatible, datos e identidad verificados, condición de edad (mayor o menor con autorización) y cupo libre al confirmar. Se reserva el cupo y se registra la incorporación.'
+    },
+    'r5-incompatible': {
+      nodes: [
+        'r5-step-inicio',
+        'r5-step-datos',
+        'r5-step-agente',
+        'r5-step-compat',
+        'r5-step-incompatible-box',
+        'r5-step-incompatible-fin'
+      ],
+      edges: [
+        'r5-edge-1',
+        'r5-edge-2',
+        'r5-edge-3',
+        'r5-edge-compat-no',
+        'r5-edge-compat-fin'
+      ],
+      tipo: 'danger',
+      mensaje: '⚪ <strong>Caso 2: Grupo no compatible.</strong> La regla exige taxativamente grupo compatible. Al no ser compatible, no se aplica la regla y no se reserva cupo.'
     },
     'r5-incompleto': {
       nodes: [
         'r5-step-inicio',
         'r5-step-datos',
         'r5-step-agente',
+        'r5-step-compat',
         'r5-step-deca',
         'r5-step-rechazo-ab',
         'r5-step-humano',
@@ -303,35 +317,40 @@ document.addEventListener('DOMContentLoaded', () => {
         'r5-edge-1',
         'r5-edge-2',
         'r5-edge-3',
+        'r5-edge-compat-si',
         'r5-edge-deca-no',
         'r5-edge-rechazo-1',
         'r5-edge-rechazo-2'
       ],
       tipo: 'purple',
-      mensaje: '🟣 <strong>Caso 2: Requisitos faltantes.</strong> No se reserva cupo; se solicita lo faltante y se deriva a revisión humana ante discrepancias (Decisión del grupo).'
+      mensaje: '🟣 <strong>Caso 3: Falta verificación o tutoría.</strong> No se reserva cupo; se solicita lo faltante y se deriva a revisión humana ante anomalías (Decisión del grupo).'
     },
     'r5-sin-cupo': {
       nodes: [
         'r5-step-inicio',
         'r5-step-datos',
         'r5-step-agente',
+        'r5-step-compat',
         'r5-step-deca',
         'r5-step-decb',
         'r5-step-decc',
         'r5-step-rechazo-c',
-        'r5-step-deriva-r6'
+        'r5-step-deriva-r6',
+        'r5-step-fin-c'
       ],
       edges: [
         'r5-edge-1',
         'r5-edge-2',
         'r5-edge-3',
+        'r5-edge-compat-si',
         'r5-edge-deca-si',
         'r5-edge-decb-si',
         'r5-edge-decc-no',
-        'r5-edge-deriva-r6'
+        'r5-edge-deriva-r6',
+        'r5-edge-deriva-fin'
       ],
-      tipo: 'danger',
-      mensaje: '🔵 <strong>Caso 3 (Caso límite R5):</strong> Cumple identidad y tutoría, pero el cupo se agotó justo al confirmar. No se reserva y pasa de inmediato al Flujo R6.'
+      tipo: 'purple',
+      mensaje: '🔵 <strong>Caso 4 (Decisión del grupo):</strong> Cumple compatibilidad, identidad y edad/tutoría, pero el cupo se agotó al confirmar. No se reserva cupo y se sugiere reelección derivando al Flujo R6.'
     }
   };
 
