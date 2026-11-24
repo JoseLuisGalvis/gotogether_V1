@@ -7,23 +7,23 @@ Desarrollo de Sistemas Web · Front End · 2026 · 2.º cuatrimestre · IFTS 29
 
 ## 1. Grupo e integrante
 
-| Dato | Detalle |
-|---|---|
-| Grupo | 35 · IFTS 29 |
-| Integrante | José Luis Galvis Escobar · Sección 2 B |
-| Modalidad | Grupo de una sola persona |
-| Fecha de entrega | 26/11/2026 |
+| Dato             | Detalle                                |
+| ---------------- | -------------------------------------- |
+| Grupo            | 35 · IFTS 29                           |
+| Integrante       | José Luis Galvis Escobar · Sección 2 B |
+| Modalidad        | Grupo de una sola persona              |
+| Fecha de entrega | 26/11/2026                             |
 
 ### Aporte concreto
 
 Al ser un grupo de una sola persona, el integrante asumió todos los roles que pide la consigna:
 
-| Rol | Qué hice |
-|---|---|
-| Coordinación de instrucciones al agente | Redacté los prompts de cada etapa y dirigí el trabajo sin editar código manualmente. |
-| Revisión de sentencias y flujos | Desarmé R5 y R6 en fichas (sentencia → datos necesarios → condición → consecuencia) y verifiqué que cada diagrama las respetara. |
-| Pruebas | Abrí la landing en desktop, probé los desplegables con clic y teclado, y recorrí un caso que cumple la condición y otro que no en cada flujo. |
-| Publicación | Subí el proyecto a un repositorio y publiqué la landing en GitHub Pages y Vercel. |
+| Rol                                     | Qué hice                                                                                                                                      |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Coordinación de instrucciones al agente | Redacté los prompts de cada etapa y dirigí el trabajo sin editar código manualmente.                                                          |
+| Revisión de sentencias y flujos         | Desarmé R5 y R6 en fichas (sentencia → datos necesarios → condición → consecuencia) y verifiqué que cada diagrama las respetara.              |
+| Pruebas                                 | Abrí la landing en desktop, probé los desplegables con clic y teclado, y recorrí un caso que cumple la condición y otro que no en cada flujo. |
+| Publicación                             | Subí el proyecto a un repositorio y publiqué la landing en GitHub Pages y Vercel.                                                             |
 
 ---
 
@@ -40,18 +40,20 @@ Al ser un grupo de una sola persona, el integrante asumió todos los roles que p
 ### Sentencias asignadas (redacción original)
 
 **R5**
+
 > Si el usuario confirma un grupo compatible, sus datos, identidad y edad están verificados, es mayor de edad o menor con autorización de su tutor y queda cupo al confirmar, el sistema reserva ese cupo y registra su incorporación. Todas las condiciones son necesarias para aplicar esta regla.
 
 **R6**
+
 > Si el grupo elegido pierde su cupo antes de completar la incorporación, el sistema informa el cambio y solicita elegir otra opción, sin asignar un grupo diferente automáticamente.
 
 ### Fichas de análisis
 
-| | R5 | R6 |
-|---|---|---|
-| **Datos necesarios** | Grupo confirmado y su compatibilidad; verificación de datos, identidad y edad; edad; autorización del tutor si es menor; cupo al confirmar | Grupo elegido; estado de la incorporación; estado del cupo |
-| **Condición** | Confirma grupo compatible **Y** datos, identidad y edad verificados **Y** (mayor de edad **O** menor con autorización del tutor) **Y** queda cupo. Todas son necesarias; el "o" aplica solo a la edad. | El grupo elegido pierde su cupo **Y** la incorporación todavía no se completó. |
-| **Consecuencia** | Reserva el cupo y registra la incorporación. | Informa el cambio y solicita elegir otra opción, sin asignar un grupo diferente automáticamente. |
+|                      | R5                                                                                                                                                                                                     | R6                                                                                               |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| **Datos necesarios** | Grupo confirmado y su compatibilidad; verificación de datos, identidad y edad; edad; autorización del tutor si es menor; cupo al confirmar                                                             | Grupo elegido; estado de la incorporación; estado del cupo                                       |
+| **Condición**        | Confirma grupo compatible **Y** datos, identidad y edad verificados **Y** (mayor de edad **O** menor con autorización del tutor) **Y** queda cupo. Todas son necesarias; el "o" aplica solo a la edad. | El grupo elegido pierde su cupo **Y** la incorporación todavía no se completó.                   |
+| **Consecuencia**     | Reserva el cupo y registra la incorporación.                                                                                                                                                           | Informa el cambio y solicita elegir otra opción, sin asignar un grupo diferente automáticamente. |
 
 ---
 
@@ -80,17 +82,17 @@ Estas alternativas son decisiones de diseño de la propuesta y están marcadas e
 
 ### Casos de prueba recorridos
 
-| Flujo | Caso | Resultado esperado |
-|---|---|---|
-| R5 | Grupo compatible, mayor de edad, todo verificado, hay cupo | Reserva e incorpora |
-| R5 | Grupo compatible, menor con autorización, todo verificado, hay cupo | Reserva e incorpora |
-| R5 | Grupo confirmado incompatible | No aplica regla / No reserva |
-| R5 | Menor sin autorización | No reserva (se solicita autorización) |
-| R5 | Identidad sin verificar | No reserva (se solicita verificación) |
-| R5 | Todo correcto pero sin cupo al confirmar | No reserva y deriva a R6 (Decisión del grupo) |
-| R6 | El grupo pierde el cupo antes de completar | Informa y pide elegir, sin asignar |
-| R6 | El grupo conserva el cupo | No se activa contingencia, la incorporación continúa |
-| R6 | Cupo perdido sin grupos alternativos | No asigna nada, ofrece ajustar búsqueda |
+| Flujo | Caso                                                                | Resultado esperado                                   |
+| ----- | ------------------------------------------------------------------- | ---------------------------------------------------- |
+| R5    | Grupo compatible, mayor de edad, todo verificado, hay cupo          | Reserva e incorpora                                  |
+| R5    | Grupo compatible, menor con autorización, todo verificado, hay cupo | Reserva e incorpora                                  |
+| R5    | Grupo confirmado incompatible                                       | No aplica regla / No reserva                         |
+| R5    | Menor sin autorización                                              | No reserva (se solicita autorización)                |
+| R5    | Identidad sin verificar                                             | No reserva (se solicita verificación)                |
+| R5    | Todo correcto pero sin cupo al confirmar                            | No reserva y deriva a R6 (Decisión del grupo)        |
+| R6    | El grupo pierde el cupo antes de completar                          | Informa y pide elegir, sin asignar                   |
+| R6    | El grupo conserva el cupo                                           | No se activa contingencia, la incorporación continúa |
+| R6    | Cupo perdido sin grupos alternativos                                | No asigna nada, ofrece ajustar búsqueda              |
 
 ---
 
@@ -112,9 +114,9 @@ La landing **no integra IA**, no ejecuta agentes, no conecta APIs y no tiene bac
 
 La consigna pide distinguir la **aplicación** (el entorno de trabajo) del **modelo** (el que figura seleccionado dentro de ella).
 
-| Aplicación | Versión de la aplicación | Modelo (tal como aparece) | Uso |
-|---|---|---|---|
-| Google Antigravity | 2.34.0 | Gemini 3.8 Flash (High) | Generación y modificación de todos los archivos del proyecto |
+| Aplicación         | Versión de la aplicación | Modelo (tal como aparece) | Uso                                                          |
+| ------------------ | ------------------------ | ------------------------- | ------------------------------------------------------------ |
+| Google Antigravity | 2.34.0                   | Gemini 3.8 Flash (High)   | Generación y modificación de todos los archivos del proyecto |
 
 ### Para qué se usó
 
@@ -122,15 +124,15 @@ El agente generó y modificó `index.html`, `styles.css`, `script.js` y este `RE
 
 ### Trabajo por etapas
 
-| Etapa | Qué se pidió al agente |
-|---|---|
-| 0 · Contexto | Entender el TP, la startup, el bloque y conservar las sentencias sin modificar. |
-| 1 · Estructura | Esqueleto semántico: encabezado, presentación, propuestas, diagramas, desplegables y pie. |
-| 2 · Contenido | Textos de presentación, títulos y beneficios, y contenido de los desplegables con supuestos, casos límite e intervención humana. |
-| 3 · Diagramas | Dos diagramas SVG con flechas, rótulos SÍ/NO y leyenda unificada. |
-| 4 · Interacción | Desplegables accesibles, botón para abrir y cerrar todos, navegación fija y simulador de casos. |
-| 5 · Diseño | Estilo basado en la paleta del logo, modo oscuro con sombras blancas, menú hamburguesa y animaciones. |
-| 6 · Auditoría | Revisión de fidelidad de sentencias, lógica de los diagramas, desbordes y teclado. |
+| Etapa                        | Qué se pidió al agente                                                                                                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0 · Contexto                 | Entender el TP, la startup, el bloque y conservar las sentencias sin modificar.                                                                                     |
+| 1 · Estructura               | Esqueleto semántico: encabezado, presentación, propuestas, diagramas, desplegables y pie.                                                                           |
+| 2 · Contenido                | Textos de presentación, títulos y beneficios, y contenido de los desplegables con supuestos, casos límite e intervención humana.                                    |
+| 3 · Diagramas                | Dos diagramas SVG con flechas, rótulos SÍ/NO y leyenda unificada.                                                                                                   |
+| 4 · Interacción              | Desplegables accesibles, botón para abrir y cerrar todos, navegación fija y simulador de casos.                                                                     |
+| 5 · Diseño                   | Estilo basado en la paleta del logo, modo oscuro con sombras blancas, menú hamburguesa y animaciones.                                                               |
+| 6 · Auditoría                | Revisión de fidelidad de sentencias, lógica de los diagramas, desbordes y teclado.                                                                                  |
 | 7 · Ajustes finales y README | Incorporación de compuerta de compatibilidad en R5, pase a R6 como supuesto, eliminación de términos no fundamentados, sección visible de Detalles y documentación. |
 
 ---
@@ -141,48 +143,48 @@ Cada iteración registra la instrucción, el problema detectado al revisar, la m
 
 ### Iteraciones 1 a 3 · Primeras etapas
 
-| | Detalle |
-|---|---|
-| **Instrucción inicial** | ETAPA 1 a 3: creación de estructura semántica, redacción de contenidos y construcción de diagramas de flujo SVG para R5 y R6. |
-| **Problema detectado** | En la primera entrega los diagramas carecían de leyenda unificada y las tarjetas de propuestas requerían mayor precisión en la delimitación de supuestos. |
-| **Mejora pedida** | Normalizar la notación visual con formas estándar (óvalos, paralelogramos, rectángulos y rombos), rótulos SÍ/NO y leyenda explícita. |
-| **Qué cambió y por qué** | Se maquetaron dos SVGs completos, interactivos y legibles en desktop, asegurando la correspondencia entre las sentencias y los nodos de decisión. |
+|                          | Detalle                                                                                                                                                   |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Instrucción inicial**  | ETAPA 1 a 3: creación de estructura semántica, redacción de contenidos y construcción de diagramas de flujo SVG para R5 y R6.                             |
+| **Problema detectado**   | En la primera entrega los diagramas carecían de leyenda unificada y las tarjetas de propuestas requerían mayor precisión en la delimitación de supuestos. |
+| **Mejora pedida**        | Normalizar la notación visual con formas estándar (óvalos, paralelogramos, rectángulos y rombos), rótulos SÍ/NO y leyenda explícita.                      |
+| **Qué cambió y por qué** | Se maquetaron dos SVGs completos, interactivos y legibles en desktop, asegurando la correspondencia entre las sentencias y los nodos de decisión.         |
 
 ### Iteración 4 · Ancla de navegación "Detalles" y Sección Visible
 
-| | Detalle |
-|---|---|
-| **Instrucción inicial** | Navegación fija con enlaces por anclas a Presentación, Propuestas, Diagramas y Detalles. |
-| **Problema detectado** | Al hacer clic en "Detalles", el ancla estaba al final de la página y no existía una sección visible propia, desorientando al usuario. |
-| **Mejora pedida** | Crear una sección visible dedicada `<section id="detalles">` con su propio encabezado, toolbar de apertura masiva y las fichas técnicas completas. |
+|                          | Detalle                                                                                                                                                            |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Instrucción inicial**  | Navegación fija con enlaces por anclas a Presentación, Propuestas, Diagramas y Detalles.                                                                           |
+| **Problema detectado**   | Al hacer clic en "Detalles", el ancla estaba al final de la página y no existía una sección visible propia, desorientando al usuario.                              |
+| **Mejora pedida**        | Crear una sección visible dedicada `<section id="detalles">` con su propio encabezado, toolbar de apertura masiva y las fichas técnicas completas.                 |
 | **Qué cambió y por qué** | El menú "Detalles" ahora tiene un destino claro, visible y estructurado, abriendo automáticamente los desplegables y haciendo foco accesible en el primer resumen. |
 
 ### Iteración 5 · Contraste de los diagramas en modo oscuro
 
-| | Detalle |
-|---|---|
-| **Instrucción inicial** | Diseño con paleta del logo y soporte de modo claro y oscuro. |
-| **Problema detectado** | En modo oscuro, los conectores y flechas SVG usaban un violeta oscuro con poco contraste sobre el fondo. |
-| **Mejora pedida** | Aplicar lila brillante `#c084fc` a conectores, líneas y puntas de flecha solo en modo oscuro mediante reglas CSS específicas. |
-| **Qué cambió y por qué** | Los diagramas se leen con claridad en ambos temas, incluidas las ramas SÍ/NO y la rama punteada de decisión del grupo. |
+|                          | Detalle                                                                                                                       |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Instrucción inicial**  | Diseño con paleta del logo y soporte de modo claro y oscuro.                                                                  |
+| **Problema detectado**   | En modo oscuro, los conectores y flechas SVG usaban un violeta oscuro con poco contraste sobre el fondo.                      |
+| **Mejora pedida**        | Aplicar lila brillante `#c084fc` a conectores, líneas y puntas de flecha solo en modo oscuro mediante reglas CSS específicas. |
+| **Qué cambió y por qué** | Los diagramas se leen con claridad en ambos temas, incluidas las ramas SÍ/NO y la rama punteada de decisión del grupo.        |
 
 ### Iteración 6 · Simulador R5 y Claridad de Condiciones
 
-| | Detalle |
-|---|---|
-| **Instrucción inicial** | Simulador visual de casos que resalta el camino en cada diagrama. |
-| **Problema detectado** | El Caso 1 no dejaba claro si cubría solo a mayores de edad o también a menores con autorización. |
-| **Mejora pedida** | Especificar en el botón y en el feedback que cubre "Mayor de edad" y "Menor con autorización del tutor", ambos con todo verificado y con cupo. |
+|                          | Detalle                                                                                                                                                                          |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Instrucción inicial**  | Simulador visual de casos que resalta el camino en cada diagrama.                                                                                                                |
+| **Problema detectado**   | El Caso 1 no dejaba claro si cubría solo a mayores de edad o también a menores con autorización.                                                                                 |
+| **Mejora pedida**        | Especificar en el botón y en el feedback que cubre "Mayor de edad" y "Menor con autorización del tutor", ambos con todo verificado y con cupo.                                   |
 | **Qué cambió y por qué** | Se elimina la duda sobre cómo se interpreta el "o" de R5: ambas situaciones cumplen la alternativa por edad y producen el mismo resultado (reserva y registra la incorporación). |
 
 ### Iteración 7 · Evaluación de compatibilidad, supuestos y precisión terminológica
 
-| | Detalle |
-|---|---|
-| **Instrucción inicial** | Ajustar observaciones detectadas en la revisión: R5 no evaluaba compatibilidad, el pase a R6 no estaba marcado como supuesto y aparecían términos inventados. |
-| **Problema detectado** | Faltaba un rombo de decisión para "grupo compatible" en R5; el pase de R5 a R6 se presentaba como regla natural cuando era un supuesto del grupo; aparecían términos como "biométrica", "reserva atómica" y "se cancela la reserva". |
-| **Mejora pedida** | Añadir rombo de compatibilidad a R5; marcar la derivación a R6 con borde punteado y etiqueta "Decisión del grupo"; eliminar palabras inventadas y presentar las herramientas explícitamente como propuestas. |
-| **Qué cambió y por qué** | El flujo R5 evalúa ahora sus cuatro condiciones taxativas; cada diagrama es autosuficiente; la derivación a R6 queda formalizada como supuesto de diseño y el lenguaje se ajusta estrictamente al marco del enunciado. |
+|                          | Detalle                                                                                                                                                                                                                              |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Instrucción inicial**  | Ajustar observaciones detectadas en la revisión: R5 no evaluaba compatibilidad, el pase a R6 no estaba marcado como supuesto y aparecían términos inventados.                                                                        |
+| **Problema detectado**   | Faltaba un rombo de decisión para "grupo compatible" en R5; el pase de R5 a R6 se presentaba como regla natural cuando era un supuesto del grupo; aparecían términos como "biométrica", "reserva atómica" y "se cancela la reserva". |
+| **Mejora pedida**        | Añadir rombo de compatibilidad a R5; marcar la derivación a R6 con borde punteado y etiqueta "Decisión del grupo"; eliminar palabras inventadas y presentar las herramientas explícitamente como propuestas.                         |
+| **Qué cambió y por qué** | El flujo R5 evalúa ahora sus cuatro condiciones taxativas; cada diagrama es autosuficiente; la derivación a R6 queda formalizada como supuesto de diseño y el lenguaje se ajusta estrictamente al marco del enunciado.               |
 
 ### Revisión propia
 
@@ -217,11 +219,11 @@ La revisión está pensada para **desktop**.
 
 ## 8. Enlaces
 
-| Recurso | Enlace |
-|---|---|
-| Repositorio | [COMPLETAR: https://github.com/…] |
-| Landing en GitHub Pages | [COMPLETAR: https://…github.io/…] |
-| Landing en Vercel | [COMPLETAR: https://….vercel.app] |
+| Recurso                 | Enlace                                          |
+| ----------------------- | ----------------------------------------------- |
+| Repositorio             | https://github.com/JoseLuisGalvis/gotogether_V1 |
+| Landing en GitHub Pages | https://joseluisgalvis.github.io/gotogether_V1  |
+| Landing en Vercel       | https://gotogetherv1-pi.vercel.app              |
 
 ---
 
@@ -229,16 +231,16 @@ La revisión está pensada para **desktop**.
 
 Comprobado desde una ventana de incógnito, sin sesión iniciada:
 
-- [ ] El repositorio abre correctamente.
-- [ ] La landing de GitHub Pages abre correctamente.
-- [ ] La landing de Vercel abre correctamente.
-- [ ] Ambos sitios muestran la versión final.
-- [ ] El logo original de GoTogether se ve completo.
-- [ ] Las sentencias R5 y R6 coinciden con el original.
-- [ ] Los dos diagramas son legibles en modo claro y oscuro.
-- [ ] Los desplegables abren y cierran con clic y teclado.
-- [ ] El enlace "Detalles" del navbar lleva a la sección visible de Detalles.
-- [ ] No hay scroll horizontal en desktop.
-- [ ] El enlace del README apunta a la versión final.
+- [x] El repositorio abre correctamente.
+- [x] La landing de GitHub Pages abre correctamente.
+- [x] La landing de Vercel abre correctamente.
+- [x] Ambos sitios muestran la versión final.
+- [x] El logo original de GoTogether se ve completo.
+- [x] Las sentencias R5 y R6 coinciden con el original.
+- [x] Los dos diagramas son legibles en modo claro y oscuro.
+- [x] Los desplegables abren y cierran con clic y teclado.
+- [x] El enlace "Detalles" del navbar lleva a la sección visible de Detalles.
+- [x] No hay scroll horizontal en desktop.
+- [x] El enlace del README apunta a la versión final.
 
 **Fecha de verificación:** 23/11/2026
